@@ -4,7 +4,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "forwarded_port", guest: 3838, host: 3838
   config.vm.provider "virtualbox" do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--memory", "3048"]
     vb.customize ["modifyvm", :id, "--cpus", "2"]
   end
 
@@ -18,8 +18,8 @@ sudo apt-get -y install r-base r-base-dev
 sudo R -e "install.packages('shiny', repos = 'http://cran.rstudio.com/', dep = TRUE)"
 sudo R -e "install.packages('rmarkdown', repos = 'http://cran.rstudio.com/', dep = TRUE)"
 sudo apt-get -y install gdebi-core
-wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.2.3.368-amd64.deb
-sudo gdebi shiny-server-1.2.3.368-amd64.deb
+wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb
+sudo gdebi shiny-server-1.5.9.923-amd64.deb
 sudo dpkg -i *.deb
 rm *.deb
 sudo ln -s /vagrant/apps /srv/shiny-server
